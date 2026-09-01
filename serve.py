@@ -6,8 +6,14 @@ Forca charset UTF-8 e faz fallback SPA para o rastreador."""
 import http.server, socketserver, os, sys
 
 PORT = 8090
-ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "beyond-mirror", "app.loggi.com")
-INDEX = os.path.join(ROOT, "rastreador.html")
+BASE = os.path.dirname(os.path.abspath(__file__))
+# Estrutura local (mirror em beyond-mirror/app.loggi.com) ou raiz do repo (Pages)
+ROOT = os.path.join(BASE, "beyond-mirror", "app.loggi.com")
+if not os.path.isdir(ROOT):
+    ROOT = BASE
+INDEX = os.path.join(ROOT, "index.html")
+if not os.path.exists(INDEX):
+    INDEX = os.path.join(ROOT, "rastreador.html")
 
 class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
